@@ -21,7 +21,7 @@ filebeat.prospectors:
   paths:
     #- /var/log/*.log
     #- C:\work\tool\dev\elk\log\act\66\actlog_json_*
-    - /Users/lihan/work/hybrid/mgsgw/output/logs/secs/test*
+    - /home/lee/work/log/*
   close_eof: true
   harvester_limit: 5
   
@@ -81,7 +81,7 @@ queue:
    events: 2048
    flush.min_events: 1024
    flush.timeout: 1s 
- 
+
 max_procs: 1
 
 #================================ Outputs =====================================
@@ -93,13 +93,15 @@ max_procs: 1
 #   hosts: ["192.168.130.189:9092"]
 #   topic: "actionlog-sample-17"
 
+
+#-------------------------- msyql output ------------------------------
 output.mysql:
-  #path: "/Users/lihan"
-  #filename: filebeat.txt
-  address: "127.0.0.1:4000"
+  address: "127.0.0.1:3306"
   username: "root"
-  password: ""
-  database: "tidb"
+  password: "123456"
+  database: "test"
+  insert: INSERT INTO migu_log_lock_account VALUES (?, ?, ?, ?);
+  parser: var regex=/\([\s'"]*([\d\w]+)[\s'"]*,[\s'"]*([\d\w\-_]+)[\s'"]*,[\s'"]*([\d:\-\s]*)[\s'"]*,[\s]*(\d*)[\s]*\)/; $$ = regex.exec($).slice(1,5); # line parser
 
 #-------------------------- Elasticsearch output ------------------------------
 #output.elasticsearch:
@@ -137,6 +139,6 @@ logging.level: info
 # "publish", "service".
 #logging.selectors: ["*"]
 logging.files:
-  path: /Users/lihan
-  name: 4rm-into-kaf-lgth.log
+  path: /home/lee/work
+  name: filebeat.log
 #  keepfiles: 2
