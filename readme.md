@@ -27,5 +27,5 @@ output.mysql:
   database: "test"
   insert: INSERT INTO migu_log_lock_account VALUES (?, ?, ?, ?);
   parser: var regex=/\([\s'"]*([\d\w]+)[\s'"]*,[\s'"]*([\d\w\-_]+)[\s'"]*,[\s'"]*([\d:\-\s]*)[\s'"]*,[\s]*(\d*)[\s]*\)/; $$ = regex.exec($).slice(1,5); # line parser
-····
+···
 
