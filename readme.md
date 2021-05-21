@@ -1,4 +1,4 @@
-<font color=black size=12 face="黑体">黑体</font>
+<font color=black size=12 face="JitBrains Mono">黑体</font>
 ## 1. 安装好go的编译环境，设置好GOROOT和GOPATH，假设GOROOT为~/go
 ## 2. 添加~/go/src到GOPATH；
 ## 3. 创建目录~/go/src/github.com/elastic/ 
