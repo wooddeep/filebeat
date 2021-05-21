@@ -18,7 +18,7 @@
 <font face="JetBrains Mono">在~/go/src/github.com/elastic/beats/filebeat文件夹生成可执行文件filebeat</font>
 
 # 配置方法
-···yaml
+···
 #-------------------------- msyql output ------------------------------
 output.mysql:
   address: "127.0.0.1:3306"
